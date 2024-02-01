@@ -25,6 +25,7 @@ from prommis.uky.uky_flowsheet import (
     build,
     set_operating_conditions,
     set_scaling,
+    initialize_system,
     solve,
 )
 
@@ -50,8 +51,8 @@ def build_flowsheet(build_options=None, **kwargs):
     m = build()
     set_operating_conditions(m)
     scaled_model = set_scaling(m)
-    # initialize_system(scaled_model) XXX: Currently not working
-    return m
+    initialize_system(scaled_model)  # XXX: Currently not working
+    return scaled_model
 
 
 def get_diagram(build_options):
